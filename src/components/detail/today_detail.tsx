@@ -37,7 +37,7 @@ function SingleWeatherDetail(props: SingleWeatherDtailProps){
     return(
         <div className='todaydetail-item'>
             <p className=''>
-                {props.information}
+                {props.information} 
             </p>
         </div>
     )
