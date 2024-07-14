@@ -34,7 +34,7 @@ export default function Navbar(props : Props){
 
 
     // 검색 박스의 onSubmit에 제공할 함수
-    function handleSumitSeach(e : React.FormEvent<HTMLFormElement>){
+    function handleSubmitSearch(e : React.FormEvent<HTMLFormElement>){
         // 클릭의 영향이 버블링 되지않게 막는다
         e.preventDefault();
         if(props.location.includes(city)){
@@ -57,7 +57,14 @@ export default function Navbar(props : Props){
                 <section className='navbar-section'>
                     <p className='location-text'>{props.place}</p>
                     <div style={{position:'relative'}}>
-                        <SearchBox searchValue={city} onChange={undefined} onSubmit={undefined} />
+                        <SearchBox searchValue={city} onChange={(e)=>handleInputChange(e.target.value)} onSubmit={handleSubmitSearch}/>
+                        {
+                            error && (
+                                <p style={{color:'red'}}>
+                                    {error}
+                                </p>
+                            )
+                        }
                     </div>
                 </section>
             </div>
@@ -69,3 +76,10 @@ export default function Navbar(props : Props){
 // npm install react-icons --save
 // npm install react-query axios classnames
 // npm install date-fns@2.30.0
+
+// chat GPT API사용법
+// npm install openai
+// chat GPT API 사이트 로그인
+// 상단 Dashborad -> API keys 로 접속
+// Create new secret key
+// Secret key 백업 해두기!
